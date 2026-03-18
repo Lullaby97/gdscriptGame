@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://d02ip58abqrmg"]
+
+[ext_resource type="Texture2D" uid="uid://bqr4rtq3036fv" path="res://icon.svg" id="1_4m8ck"]
+[ext_resource type="Script" uid="uid://h5m7cne67b7i" path="res://src/entities/player/player.gd" id="1_wrxq6"]
+[ext_resource type="Script" uid="uid://cj8c45anugwsp" path="res://src/components/hitbox_component.gd" id="2_vt6n5"]
+[ext_resource type="Script" uid="uid://in212l6wtnhv" path="res://src/entities/player/weapon_pivot.gd" id="3_ketdh"]
+[ext_resource type="Script" uid="uid://2mjl4mbdj8lp" path="res://src/components/game_camera.gd" id="5_ketdh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vt6n5"]
+size = Vector2(134, 130)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_muk8e"]
+size = Vector2(138, 29)
+
+[node name="Player" type="CharacterBody2D" unique_id=8192400]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_wrxq6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=614610379]
+texture = ExtResource("1_4m8ck")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1162244416]
+shape = SubResource("RectangleShape2D_vt6n5")
+
+[node name="WeaponPivot" type="Node2D" parent="." unique_id=1132326204]
+script = ExtResource("3_ketdh")
+
+[node name="FlyingSword" type="Area2D" parent="WeaponPivot" unique_id=1061333270]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("2_vt6n5")
+metadata/_custom_type_script = "uid://cj8c45anugwsp"
+
+[node name="Sprite2D" type="Sprite2D" parent="WeaponPivot/FlyingSword" unique_id=819706089]
+position = Vector2(100, 2)
+scale = Vector2(1.015625, 0.203125)
+texture = ExtResource("1_4m8ck")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponPivot/FlyingSword" unique_id=857797503]
+position = Vector2(100, 2.5)
+shape = SubResource("RectangleShape2D_muk8e")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=281395690]
+position_smoothing_enabled = true
+script = ExtResource("5_ketdh")
