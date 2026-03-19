@@ -15,7 +15,7 @@ func _ready() -> void:
 	health_component.died.connect(_on_died)
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if not is_instance_valid(_player):
 		return
 
