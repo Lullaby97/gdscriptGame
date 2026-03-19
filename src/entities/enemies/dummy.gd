@@ -1,9 +1,13 @@
 class_name Dummy
 extends CharacterBody2D
 
+@export var move_speed: float = 100.0
+
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
+
+var _player: Node2D
 
 
 func _ready() -> void:
@@ -11,8 +15,18 @@ func _ready() -> void:
 	health_component.died.connect(_on_died)
 
 
+func _physics_process(delta: float) -> void:
+	if not is_instance_valid(_player):
+		return
+
+	var direction: Vector2 = global_position.direction_to(_player.global_position)
+	velocity = direction * move_speed
+	move_and_slide()
+
+
 func activate(spawn_position: Vector2) -> void:
 	global_position = spawn_position
+	_player = get_tree().get_first_node_in_group("player") as Node2D
 	health_component.reset()
 	show()
 	process_mode = Node.PROCESS_MODE_INHERIT
@@ -20,6 +34,7 @@ func activate(spawn_position: Vector2) -> void:
 
 
 func deactivate() -> void:
+	_player = null
 	hide()
 	process_mode = Node.PROCESS_MODE_DISABLED
 	collision_shape.set_deferred("disabled", true)
