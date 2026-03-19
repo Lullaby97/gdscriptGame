@@ -49,6 +49,8 @@ move_right={
 2d_physics/layer_3="Enemy (怪物的物理实体)"
 2d_physics/layer_4="PlayerHitbox (玩家发出的攻击/弹幕)"
 2d_physics/layer_5="EnemyHitbox (怪物发出的攻击/接触伤害)"
+2d_physics/layer_6="Loot (掉落物)"
+2d_physics/layer_7="PlayerPickup (玩家磁吸范围)"
 
 [physics]
 

@@ -1,6 +1,8 @@
 class_name Dummy
 extends CharacterBody2D
 
+const GEM_SCENE: PackedScene = preload("res://src/entities/loot/experience_gem.tscn")
+
 @export var move_speed: float = 100.0
 
 @onready var health_component: HealthComponent = $HealthComponent
@@ -50,4 +52,7 @@ func _on_health_changed(current: float, max_health: float) -> void:
 
 func _on_died() -> void:
 	print("Dummy died!")
+	var gem: Node2D = GEM_SCENE.instantiate() as Node2D
+	gem.global_position = global_position
+	get_tree().current_scene.call_deferred("add_child", gem)
 	deactivate.call_deferred()
