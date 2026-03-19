@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d02ip58abqrmg" path="res://src/entities/player/player.tscn" id="1_gsms5"]
 [ext_resource type="PackedScene" uid="uid://cnfqb568dkbd8" path="res://src/entities/enemies/dummy.tscn" id="2_5j1nm"]
+[ext_resource type="Script" uid="uid://qsihx6vrjhuy" path="res://src/entities/enemies/enemy_spawner.gd" id="3_5j1nm"]
 
 [node name="Main" type="Node2D" unique_id=1925689280]
 
@@ -15,3 +16,8 @@ position = Vector2(186, -141)
 
 [node name="Dummy3" parent="." unique_id=1782011973 instance=ExtResource("2_5j1nm")]
 position = Vector2(-151, 123)
+
+[node name="EnemySpawner" type="Node2D" parent="." unique_id=2110725576 node_paths=PackedStringArray("player")]
+script = ExtResource("3_5j1nm")
+enemy_scene = ExtResource("2_5j1nm")
+player = NodePath("../Player")
