@@ -1,3 +1,63 @@
-# Godot 4+ specific ignores
+# --- Godot 缓存与临时文件 ---
 .godot/
-/android/
+.import/
+*.tmp
+
+# --- 编辑器特定设置 ---
+# 如果你希望在不同机器上保持完全一致的布局，可以注释掉下面两行
+# 但通常建议忽略，因为显示器分辨率和窗口位置可能不同
+export_presets.cfg
+.editor_layout.vars
+
+# --- 编译与导出产物 ---
+# 忽略所有导出目录（通常建议在导出时指定独立文件夹）
+export/
+build/
+bin/
+
+# 忽略导出的二进制文件
+*.7z
+*.debug
+*.apk
+*.aab
+*.exe
+*.zip
+*.tar.gz
+*.dmg
+*.pkg
+*.app
+*.ipa
+*.pck
+
+# --- macOS 特有文件 (关键) ---
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# --- Windows 特有文件 ---
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# --- 插件与外部工具 ---
+# 如果你使用 C# (Mono)，请取消下面行的注释
+# .mono/
+# bin/
+# obj/
+# *.sln
+# *.csproj
+
+# 如果你使用 C++ / GDExtension
+# *.o
+# *.obj
+# *.so
+# *.dll
+# *.lib
